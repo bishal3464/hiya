@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Happy Birthday Hiya! 💖 A Beautiful Tribute by Bishal</title>
+    <!-- Google Fonts for elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fef0f5 0%, #ffe4ef 100%);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding: 2rem 1rem;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* floating hearts animation */
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 1.2rem;
+            animation: floatUp 4s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        /* notification permission toast */
+        .notification-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #b84c6f;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notification-toast:hover {
+            transform: scale(1.02);
+            background: #a13e5e;
+        }
+
+        .pages-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(1px);
+            border-radius: 3rem;
+            box-shadow: 0 30px 50px rgba(221, 112, 143, 0.2), 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            padding: 2rem 2rem 2.5rem;
+            border: 1px solid rgba(255, 210, 220, 0.9);
+        }
+
+        .page:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 40px 60px rgba(226, 100, 130, 0.25);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .page-header i {
+            font-size: 3rem;
+            color: #f48eb0;
+            background: #fff0f5;
+            padding: 0.7rem;
+            border-radius: 100px;
+            box-shadow: 0 5px 15px #ffd9e4;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.3px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #D45A7A, #A93E5E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0.8rem 0 0.3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #b34e6e;
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-bottom: 3px dotted #ffbfd1;
+            padding-bottom: 0.3rem;
+        }
+
+        .heart-divider {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+            color: #f7a2bd;
+            font-size: 1.2rem;
+        }
+
+        .greeting-text {
+            font-size: 1.2rem;
+            line-height: 1.55;
+            color: #4a2e38;
+            background: #fffbfd;
+            padding: 1.3rem;
+            border-radius: 2rem;
+            margin: 1rem 0;
+            border-left: 8px solid #f7a1bb;
+            font-weight: 450;
+        }
+
+        .memory-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
+            margin: 30px 0;
+        }
+
+        .memory-card {
+            background: #fff6f9;
+            border-radius: 32px;
+            padding: 18px 12px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 0 15px 25px #ffe0ea;
+            transition: all 0.2s;
+        }
+
+        .memory-card i {
+            font-size: 3.2rem;
+            color: #e26e91;
+        }
+
+        .memory-card p {
+            margin-top: 12px;
+            font-weight: 600;
+            color: #b65678;
+        }
+
+        .gift-box {
+            background: #fff4f8;
+            border-radius: 2rem;
+            padding: 1.3rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1rem;
+        }
+
+        .btn {
+            background: white;
+            border: 2px solid #f3a5bf;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #b44b6e;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #f9b6cd;
+            border-color: #f9b6cd;
+            color: #682c44;
+            box-shadow: 0 4px 12px #ffbfd3;
+        }
+
+        .btn-primary:hover {
+            background: #ff9dbd;
+            transform: scale(1.02);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: #ffeef3;
+            transform: scale(0.98);
+        }
+
+        .wishlist {
+            background: #fef5f8;
+            border-radius: 28px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wishlist li {
+            list-style: none;
+            padding: 10px 0 10px 34px;
+            position: relative;
+            font-weight: 500;
+            color: #5c3746;
+            font-size: 1rem;
+        }
+
+        .wishlist li i {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: #f27da2;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            text-align: center;
+            color: #da8ca7;
+            margin-top: 28px;
+            border-top: 1px dashed #fcd3e2;
+            padding-top: 18px;
+        }
+
+        .name-badge {
+            background: #ffeef4;
+            border-radius: 50px;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #bf5e7e;
+            letter-spacing: 1px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .floating {
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .page { padding: 1.5rem; }
+            h1 { font-size: 2.2rem; }
+            .memory-card { width: 130px; }
+        }
+
+        .cake-emoji {
+            font-size: 2rem;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .admire-quote {
+            font-style: italic;
+            background: linear-gradient(120deg, #fff0f5, #ffeef4);
+            border-radius: 40px;
+            padding: 1rem;
+            text-align: center;
+            margin: 20px 0;
+            border: 1px solid #ffd5e2;
+        }
+        
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #b14d6e;
+            margin-top: 15px;
+            text-align: right;
+            border-top: 1px dashed #ffcddb;
+            padding-top: 15px;
+        }
+        
+        .writer-name {
+            font-weight: 700;
+            color: #c45a7c;
+            letter-spacing: 1px;
+        }
+        
+        .bishal-stamp {
+            display: inline-block;
+            background: #ffeef4;
+            border-radius: 40px;
+            padding: 5px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #b85374;
+            margin-top: 8px;
+        }
+
+        /* voice indicator */
+        .voice-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0e1e8;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #b84c6f;
+            margin-top: 10px;
+        }
+        .voice-indicator i {
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1);}
+            50% { opacity: 1; transform: scale(1.1);}
+        }
+    </style>
+</head>
+<body>
+
+<div class="pages-container">
+    <!-- ==================== PAGE 1 : BIRTHDAY WISH + BISHAL'S MESSAGE ==================== -->
+    <div class="page" id="page1">
+        <div class="page-header">
+            <i class="fas fa-birthday-cake floating"></i>
+            <h1>Happy Birthday, Hiya! 🎀</h1>
+            <div class="name-badge"><i class="fas fa-star"></i> Celebrating You <i class="fas fa-star"></i></div>
+        </div>
+        <div class="heart-divider">
+            <i class="fas fa-heart"></i> <i class="fas fa-sparkle"></i> <i class="fas fa-heart"></i>
+        </div>
+        <div class="greeting-text">
+            <i class="fas fa-crown" style="color:#f5a2bc; margin-right:8px;"></i> 
+            Dear <strong>Hiya</strong>, today the world feels brighter because it's YOUR day!  
+            You bring so much warmth, kindness, and beautiful energy wherever you go.  
+            I'm so grateful to have you in my life — you're truly one of a kind.  
+            May this birthday be the start of a year filled with dream-come-true moments,  
+            genuine happiness, and everything your heart desires. Shine on, Hiya! 💖
+        </div>
+        
+        <!-- Bishal's dedicated message -->
+        <div class="gift-box" style="background: linear-gradient(135deg, #fff3f8, #ffeef5);">
+            <i class="fas fa-feather-alt" style="font-size: 2rem; color:#e26e91;"></i>
+            <p style="margin-top: 8px; font-weight: 600; color:#b44b6e;">✍️ A Message from <span class="writer-name">Bishal</span> ✍️</p>
+            <p style="margin-top: 12px; font-style: italic; color:#5c3746;">
+                "Hiya, every word on these pages comes straight from my heart. 
+                You have a rare kind of magic — the ability to make people feel seen, valued, and inspired. 
+                I wanted to create something beautiful for you because that's what you truly deserve. 
+                May your birthday be as radiant as the light you bring into this world. With my deepest admiration and warmest wishes."
+            </p>
+            <div class="signature" style="text-align: center; border-top: none; padding-top: 10px;">
+                — With love & respect, <strong class="writer-name">Bishal</strong> 💫
+            </div>
+            <div class="bishal-stamp">
+                <i class="fas fa-pen-fancy"></i> written by Bishal
+            </div>
+        </div>
+        
+        <div class="admire-quote">
+            <i class="fas fa-feather-alt" style="color:#db7c9b;"></i> "Some people make the world better just by being in it. That's you, Hiya."
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary" id="toPage2Btn"><i class="fas fa-arrow-right"></i> Next: Beautiful Moments</button>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-map-pin"></i> Page 1 · Celebrating you, Hiya · from Bishal
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2 : SPECIAL MOMENTS & ADMIRATION ==================== -->
+    <div class="page" id="page2" style="display: none;">
+        <div class="page-header">
+            <i class="fas fa-camera-retro floating"></i>
+            <h2>🌸 The Beautiful You</h2>
+            <div class="heart-divider">
+                <i class="fas fa-star"></i> <i class="fas fa-star-of-life"></i> <i class="fas fa-star"></i>
+            </div>
+        </div>
+        <p style="text-align: center; font-weight: 500; color:#a55373;">The little things that make you so special — a celebration of your wonderful self 🌷</p>
+        
+        <div class="memory-grid">
+            <div class="memory-card">
+                <i class="fas fa-smile-beam"></i>
+                <p>Your smile</p>
+                <small style="color:#cc8da4;">that lights up any room</small>
+            </div>
+            <div class="memory-card">
+                <i class="fas fa-heart"></i>
+                <p>Kind heart</p>
+                <small style="color:#cc8da4;">you always care deeply</small>
+            </div>
+            <div class="memory-card">
+                <i class="fas fa-brain"></i>
+                <p>Beautiful mind</p>
+                <small style="color:#cc8da4;">your wisdom & ideas</small>
+            </div>
+            <div class="memory-card">
+                <i class="fas fa-dove"></i>
+                <p>Gentle soul</p>
+                <small style="color:#cc8da4;">pure & inspiring</small>
+            </div>
+        </div>
+
+        <div class="greeting-text" style="background: #fff2f7;">
+            <i class="fas fa-quote-left" style="margin-right: 8px; color:#ee87a8;"></i>  
+            Hiya, you have a way of making people feel seen and valued. Your kindness leaves a mark on everyone who knows you.  
+            Whether it's your thoughtful words, your genuine laughter, or the way you show up for others — you're simply incredible.  
+            I admire your strength, your grace, and the beautiful soul you are. Thank you for being you. 🌸
+        </div>
+        
+        <!-- Bishal's second message -->
+        <div class="wishlist" style="background: #fff0f7;">
+            <i class="fas fa-pen-fancy" style="display: block; text-align: center; margin-bottom: 10px; font-size: 1.6rem; color:#e26e91;"></i>
+            <p style="text-align: center; font-weight: 600; color:#b44b6e;">✍️ From <span class="writer-name">Bishal</span>'s Heart ✍️</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Your authenticity is rare — never change who you are 🌟</li>
+                <li><i class="fas fa-check-circle"></i> The way you listen and truly care — that's your superpower 🦋</li>
+                <li><i class="fas fa-check-circle"></i> Your dreams are valid, and I believe in every single one of them 💫</li>
+                <li><i class="fas fa-check-circle"></i> You make this world a softer, brighter, more beautiful place 🌈</li>
+                <li><i class="fas fa-check-circle"></i> Thank you for existing — your presence is a precious gift ✨</li>
+            </ul>
+            <div class="signature" style="text-align: center; border-top: none; padding-top: 5px; margin-top: 5px;">
+                — Always cheering for you, <strong class="writer-name">Bishal</strong> 🖋️
+            </div>
+            <div class="bishal-stamp" style="display: block; text-align: center; margin-top: 10px;">
+                <i class="fas fa-heart"></i> written with love by Bishal
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-outline" id="backToPage1Btn"><i class="fas fa-arrow-left"></i> Back to Wishes</button>
+            <button class="btn btn-primary" id="toPage3Btn"><i class="fas fa-gift"></i> Next: Birthday Wishes & Dreams</button>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-images"></i> Page 2 · For the wonderful Hiya · from Bishal
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 3 : WARM WISHES + FUTURE DREAMS ==================== -->
+    <div class="page" id="page3" style="display: none;">
+        <div class="page-header">
+            <i class="fas fa-champagne-glasses floating"></i>
+            <h2>🎈 Cheers to You, Hiya!</h2>
+        </div>
+        <div class="cake-emoji" style="text-align: center; margin: 5px 0;">
+            🍰🎁🎈🌸✨💖
+        </div>
+        <div class="greeting-text">
+            <i class="fas fa-sparkle" style="color: #e47b9b;"></i>  
+            On your special day, I wish you:  
+            <strong>happiness that never fades, courage to chase every dream, and a heart forever full of peace.</strong>  
+            You deserve a year ahead that's as wonderful as you are. May every sunrise bring you closer to your goals,  
+            and every sunset leave you grateful. Keep being the incredible person you are, Hiya — the world is lucky to have you.
+        </div>
+
+        <div class="gift-box" style="background: linear-gradient(135deg, #fff1f6, #ffeef3);">
+            <i class="fas fa-star-of-life" style="font-size: 2rem; color:#e26186;"></i>
+            <h3 style="margin: 12px 0; font-family: 'Playfair Display'; color:#b7496b;">✨ 5 Heartfelt Wishes for Hiya ✨</h3>
+            <div style="text-align: left; padding-left: 20px;">
+                <p><i class="fas fa-globe-asia"></i> &nbsp; 1. Adventures that fill your soul with wonder 🌍✈️</p>
+                <p><i class="fas fa-chart-line"></i> &nbsp; 2. Success in everything you pour your heart into 📚🔥</p>
+                <p><i class="fas fa-hand-holding-heart"></i> &nbsp; 3. Surroundings filled with genuine love and laughter 💞</p>
+                <p><i class="fas fa-peace"></i> &nbsp; 4. Inner peace and beautiful self-belief every single day ☁️</p>
+                <p><i class="fas fa-crown"></i> &nbsp; 5. A year sweeter than honey, more brilliant than gold 🍰✨</p>
+            </div>
+        </div>
+
+        <div class="wishlist" style="background: #fff1f7;">
+            <i class="fas fa-envelope-open-text" style="font-size: 1.5rem; color:#e46e92; display: block; text-align: center; margin-bottom: 12px;"></i>
+            <p style="text-align: center; font-style: italic; font-weight: 500;">“May your birthday be as radiant and beautiful as the mark you leave on this world.”</p>
+            <div class="signature" style="text-align: center; border-top: none; margin-top: 10px;">
+                — With deepest admiration, <strong class="writer-name">Bishal</strong> 🎀
+            </div>
+            <div class="bishal-stamp" style="display: block; text-align: center; margin-top: 12px;">
+                <i class="fas fa-birthday-cake"></i> lovingly written by Bishal
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 20px 0 10px;">
+            <i class="fas fa-birthday-cake" style="color:#f096b2; font-size: 2rem;"></i>
+            <p style="font-weight: 600; color:#b8496b;">Today is all about YOU. Enjoy every moment, Hiya!</p>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-outline" id="backToPage2Btn"><i class="fas fa-arrow-left"></i> Back to Memories</button>
+            <button class="btn btn-primary" id="replayBtn"><i class="fas fa-heart"></i> Start Over 💖</button>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-birthday-cake"></i> Warmest wishes from Bishal — celebrating you, Hiya. Happy Birthday!
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== AUTOMATIC VOICE MESSAGE + NOTIFICATION ==========
+    let speechSynthesisEnabled = false;
+    let autoMessageSpoken = false;
+
+    // Function to speak birthday message
+    function speakBirthdayMessage() {
+        if (!window.speechSynthesis) {
+            console.log("Speech synthesis not supported");
+            return;
+        }
+        // Stop any ongoing speech to avoid overlap
+        window.speechSynthesis.cancel();
+        
+        const message = `Happy Birthday Hiya! This is Bishal speaking from the heart. I wish you the most amazing birthday ever. You are special, you are loved, and you make the world brighter just by being you. Have a fantastic day, Hiya! Lots of love and warm wishes.`;
+        
+        const utterance = new SpeechSynthesisUtterance(message);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.95;
+        utterance.pitch = 1.1;
+        utterance.volume = 1;
+        
+        // Optional: try to pick a female voice if available for warmth
+        if (window.speechSynthesis.getVoices) {
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(voice => voice.lang === 'en-US' && voice.name.includes('Google UK Female'));
+            if (preferredVoice) utterance.voice = preferredVoice;
+        }
+        
+        utterance.onend = () => {
+            console.log("Voice message completed");
+        };
+        
+        window.speechSynthesis.speak(utterance);
+        autoMessageSpoken = true;
+    }
+
+    // Request notification permission and send notification
+    function sendBirthdayNotification() {
+        if (!("Notification" in window)) {
+            console.log("Browser does not support notifications");
+            return;
+        }
+        
+        if (Notification.permission === "granted") {
+            showNotification();
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    showNotification();
+                }
+            });
+        }
+    }
+
+    function showNotification() {
+        // Send a beautiful birthday notification
+        const notification = new Notification("🎂 Happy Birthday Hiya! 🎂", {
+            body: "Bishal has sent you a beautiful birthday wish! Open this card to feel the love 💖",
+            icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f9b6cd'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='white'%3E🎂%3C/text%3E%3C/svg%3E",
+            tag: "birthday-hiya",
+            requireInteraction: false,
+            silent: false
+        });
+        
+        notification.onclick = function() {
+            window.focus();
+            notification.close();
+        };
+        
+        // Also add a console notification
+        console.log("%c💖 NOTIFICATION SENT: Happy Birthday Hiya from Bishal! 💖", "color: #c45a7c; font-size: 14px; font-weight: bold;");
+    }
+
+    // Trigger auto voice and notification on page load (with slight delay for smoothness)
+    function triggerAutoMessage() {
+        // Automatic voice message
+        setTimeout(() => {
+            speakBirthdayMessage();
+        }, 800);
+        
+        // Automatic browser notification
+        setTimeout(() => {
+            sendBirthdayNotification();
+        }, 1200);
+    }
+
+    // Also show a small visual indicator on page that voice message is playing
+    function addVoiceIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'voice-indicator';
+        indicator.innerHTML = '<i class="fas fa-volume-up"></i> 🎤 Bishal\'s voice message is playing automatically!';
+        indicator.style.position = 'fixed';
+        indicator.style.bottom = '20px';
+        indicator.style.left = '20px';
+        indicator.style.zIndex = '1000';
+        indicator.style.background = '#fff0f5';
+        indicator.style.padding = '8px 16px';
+        indicator.style.borderRadius = '40px';
+        indicator.style.boxShadow = '0 2px 12px rgba(0,0,0,0.1)';
+        indicator.style.fontSize = '0.8rem';
+        indicator.style.color = '#b84c6f';
+        indicator.style.pointerEvents = 'none';
+        document.body.appendChild(indicator);
+        
+        setTimeout(() => {
+            if (indicator) indicator.style.opacity = '0.6';
+        }, 5000);
+    }
+
+    // DOM Elements for page navigation
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+
+    const toPage2Btn = document.getElementById('toPage2Btn');
+    const backToPage1Btn = document.getElementById('backToPage1Btn');
+    const toPage3Btn = document.getElementById('toPage3Btn');
+    const backToPage2Btn = document.getElementById('backToPage2Btn');
+    const replayBtn = document.getElementById('replayBtn');
+
+    function showPage(pageToShow) {
+        page1.style.display = 'none';
+        page2.style.display = 'none';
+        page3.style.display = 'none';
+        
+        if (pageToShow === 1) {
+            page1.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (pageToShow === 2) {
+            page2.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (pageToShow === 3) {
+            page3.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    if (toPage2Btn) toPage2Btn.addEventListener('click', () => showPage(2));
+    if (backToPage1Btn) backToPage1Btn.addEventListener('click', () => showPage(1));
+    if (toPage3Btn) toPage3Btn.addEventListener('click', () => showPage(3));
+    if (backToPage2Btn) backToPage2Btn.addEventListener('click', () => showPage(2));
+    if (replayBtn) replayBtn.addEventListener('click', () => showPage(1));
+
+    const allButtons = document.querySelectorAll('.btn');
+    allButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            this.style.transform = 'scale(0.96)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+    
+    // Memory card hover effects
+    const memoryCards = document.querySelectorAll('.memory-card');
+    memoryCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-8px)';
+            card.style.background = '#ffeff5';
+            card.style.boxShadow = '0 20px 30px #ffccda';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0px)';
+            card.style.background = '#fff6f9';
+            card.style.boxShadow = '0 15px 25px #ffe0ea';
+        });
+    });
+    
+    // Floating hearts generator
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = ['❤️', '💖', '🌸', '🎀', '✨', '💗'][Math.floor(Math.random() * 6)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.bottom = '0px';
+        heart.style.fontSize = (Math.random() * 20 + 14) + 'px';
+        heart.style.opacity = Math.random() * 0.7 + 0.3;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+    
+    // welcome console and effects
+    window.addEventListener('load', () => {
+        console.log("%c✨🎂 HAPPY BIRTHDAY HIYA! 🎂✨", "color: #e25e84; font-size: 18px; font-weight: bold;");
+        console.log("%c💖 This beautiful card was written by BISHAL with love & admiration for HIYA 💖", "color: #b84c6f; font-size: 14px;");
+        console.log("%c🔊 AUTOMATIC VOICE MESSAGE: Bishal's birthday wish is now playing... 🔊", "color: #d45a7a; font-size: 13px;");
+        console.log("%c🔔 NOTIFICATION: Birthday notification sent to Hiya! 🔔", "color: #c45a7c;");
+        
+        showPage(1);
+        
+        // Start floating hearts
+        for(let i = 0; i < 6; i++) {
+            setTimeout(() => createFloatingHeart(), i * 400);
+        }
+        setInterval(() => {
+            if (Math.random() > 0.7) createFloatingHeart();
+        }, 3000);
+        
+        // Pulsing name badge
+        const badge = document.querySelector('.name-badge');
+        if (badge) {
+            setInterval(() => {
+                badge.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    badge.style.transform = 'scale(1)';
+                }, 600);
+            }, 2000);
+        }
+        
+        // Trigger automatic voice message + notification
+        triggerAutoMessage();
+        
+        // Add visual voice indicator
+        addVoiceIndicator();
+        
+        // Also ensure that if user interacts with buttons, voice doesn't duplicate but that's fine
+        // Also small highlight for Bishal's box
+        const bishalBox = document.querySelector('.gift-box');
+        if (bishalBox) {
+            setTimeout(() => {
+                bishalBox.style.boxShadow = '0 0 0 2px #ffbfd0, 0 8px 20px rgba(226, 100, 130, 0.2)';
+                setTimeout(() => {
+                    bishalBox.style.boxShadow = '';
+                }, 1000);
+            }, 1000);
+        }
+    });
+    
+    // Preload voices for smoother speech
+    if (window.speechSynthesis) {
+        window.speechSynthesis.getVoices();
+    }
+</script>
+</body>
+</html>
